@@ -1,6 +1,6 @@
 from . import models 
 from . import serializers
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions, viewsets
 
 
 #vendor
@@ -54,4 +54,6 @@ class OrderDetail(generics.ListAPIView):
         return order_items
 
 
- 
+class CustomerAddressViewSet(viewsets.ModelViewSet):
+    serializer_class=serializers.CustomerAddressSerializer
+    queryset=models.CustomerAddress.objects.all()

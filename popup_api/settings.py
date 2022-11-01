@@ -146,7 +146,7 @@ REST_FRAMEWORK = {
     
     
     'DEFAULT_PAGINATION_CLASS':'main.pagination.CustomPagination',
-    'PAGE_SIZE':1
+    'PAGE_SIZE':10
 }
 
 # AUTH_USER_MODEL = 'your_app_name.User'
