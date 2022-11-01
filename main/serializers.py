@@ -85,8 +85,8 @@ class OrderSerializer(serializers.ModelSerializer):
 
 class OrderDetailSerializer(serializers.ModelSerializer):
     class Meta:
-        model=models.Order
-        fields=['id', 'customer', 'order_time']
+        model=models.OrderItems
+        fields=['id', 'order', 'product']
 
 
     def __init__(self, *args, **kwargs):
@@ -95,23 +95,23 @@ class OrderDetailSerializer(serializers.ModelSerializer):
     
     
 
-class OrderItemSerializer(serializers.ModelSerializer):
-    class Meta:
-        model=models.OrderItems
-        fields=['id', 'order', 'product']
+# class OrderItemSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model=models.OrderItems
+#         fields=['id', 'order', 'product']
 
 
-    def __init__(self, *args, **kwargs):
-        super(OrderItemSerializer, self).__init__(*args, **kwargs)    
-        self.Meta.depth = 1
+#     def __init__(self, *args, **kwargs):
+#         super(OrderItemSerializer, self).__init__(*args, **kwargs)    
+#         self.Meta.depth = 1
 
 
-class OrderItemDetailSerializer(serializers.ModelSerializer):
-    class Meta:
-        model=models.OrderItems
-        fields=['id', 'order', 'product']
+# class OrderItemDetailSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model=models.OrderItems
+#         fields=['id', 'order', 'product']
 
-    def __init__(self, *args, **kwargs):
-        super(OrderItemDetailSerializer, self).__init__(*args, **kwargs)    
-        self.Meta.depth = 1
+#     def __init__(self, *args, **kwargs):
+#         super(OrderItemDetailSerializer, self).__init__(*args, **kwargs)    
+#         self.Meta.depth = 1
         
