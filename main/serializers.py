@@ -10,7 +10,7 @@ class VendorSerializer(serializers.ModelSerializer):
 
     def __init__(self, *args, **kwargs):
         super(VendorSerializer, self).__init__(*args, **kwargs)    
-        # self.Meta.depth = 1
+        self.Meta.depth = 1
 
 
 class VendorDetailSerializer(serializers.ModelSerializer):
@@ -21,7 +21,7 @@ class VendorDetailSerializer(serializers.ModelSerializer):
 
     def __init__(self, *args, **kwargs):
         super(VendorDetailSerializer, self).__init__(*args, **kwargs)    
-        # self.Meta.depth = 1
+        self.Meta.depth = 1
     
 
 
@@ -34,7 +34,7 @@ class ProductListSerializer(serializers.ModelSerializer):
 
     def __init__(self, *args, **kwargs):
         super(ProductListSerializer, self).__init__(*args, **kwargs)    
-        # self.Meta.depth = 1
+        self.Meta.depth = 1
     
 
 class ProductDetailSerializer(serializers.ModelSerializer):
@@ -44,11 +44,28 @@ class ProductDetailSerializer(serializers.ModelSerializer):
         fields=['id', 'category', 'vendor', 'title' , 'detail', 'price', 'product_ratings']
 
 
+
+class ProductCategoryListSerializer(serializers.ModelSerializer):
+    product_ratings=serializers.StringRelatedField(many=True, read_only=True)
+    class Meta:
+        model=models.Product
+        fields=['id', 'title' , 'detail','product_ratings']
+
+
     def __init__(self, *args, **kwargs):
-        super(ProductDetailSerializer, self).__init__(*args, **kwargs)    
-        # self.Meta.depth = 1    
+        super(ProductCategoryListSerializer, self).__init__(*args, **kwargs)    
+        self.Meta.depth = 1
+    
 
+class ProductCategoryDetailSerializer(serializers.ModelSerializer):
+    product_ratings=serializers.StringRelatedField(many=True, read_only=True)
+    class Meta:
+        model=models.Product
+        fields=['id', 'title', 'detail', 'product_ratings']
 
+    def __init__(self, *args, **kwargs):
+        super(ProductCategoryDetailSerializer, self).__init__(*args, **kwargs)    
+        self.Meta.depth = 1    
 
 
 class CustomerSerializer(serializers.ModelSerializer):
